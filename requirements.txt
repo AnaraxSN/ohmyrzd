@@ -1,0 +1,19 @@
+# Telegram Bot API
+python-telegram-bot==20.7
+
+# HTTP клиент для парсинга
+aiohttp==3.9.1
+
+# Парсинг HTML
+beautifulsoup4==4.12.2
+
+# База данных SQLite
+aiosqlite==0.19.0
+
+# Логирование и утилиты
+asyncio-mqtt==0.16.1
+
+# Дополнительные зависимости
+lxml==4.9.3
+requests==2.31.0
+

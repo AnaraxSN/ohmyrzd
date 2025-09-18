@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  rzd-bot:
+    build: .
+    container_name: rzd-telegram-bot
+    restart: unless-stopped
+    
+    # Переменные окружения
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - MONITORING_INTERVAL=${MONITORING_INTERVAL:-300}
+      - MAX_RETRIES=${MAX_RETRIES:-3}
+      - RETRY_DELAY=${RETRY_DELAY:-60}
+      - DATABASE_PATH=/app/data/rzd_bot.db
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    
+    # Тома для сохранения данных
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    
+    # Лимиты ресурсов
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+
